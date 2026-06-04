@@ -5,7 +5,7 @@ import os
 import pymupdf
 
 load_dotenv()
-api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
+api_key = st.secrets.get("ANTHROPIC_API_KEY") if hasattr(st, 'secrets') else os.getenv("ANTHROPIC_API_KEY")
 client = anthropic.Anthropic(api_key=api_key)
 
 st.title("Document Analyser")
@@ -25,7 +25,7 @@ if uploaded_file is not None:
     if st.button("Analyse"):
         with st.spinner("Analysing..."):
             message = client.messages.create(
-                model="claude-opus-4-5",
+                model="claude-sonnet-4-6",
                 max_tokens=1024,
                 messages=[
                     {
