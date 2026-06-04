@@ -2,3 +2,5 @@ anthropic
 streamlit
 python-dotenv
 pymupdf
+beautifulsoup4
+requests
