@@ -5,8 +5,8 @@ import os
 import pymupdf
 
 load_dotenv()
-
-client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+api_key = st.secrets.get("ANTHROPIC_API_KEY") or os.getenv("ANTHROPIC_API_KEY")
+client = anthropic.Anthropic(api_key=api_key)
 
 st.title("Document Analyser")
 st.write("Upload a PDF or text file to get an instant analysis.")
